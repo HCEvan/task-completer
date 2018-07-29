@@ -1,44 +1,27 @@
 $(document).ready(() => {
-    
-    // Log any saved tasks if present in localStorage
-    (() => {
-
-        let tasks = JSON.parse(localStorage.getItem('tasks'));
-
-        // Check if tasks exist in localStorage
-        if (!tasks) {
-            console.log('No tasks in localStorage');
-            localStorage.setItem('tasks', '[]');
-        } else {
-            for (i = 0; i < tasks.length; i++) {
-                console.log(`Tasks in localStorage - [${i}]: ${tasks[i].task}, ${tasks[i].date}`);
-            }
-        }
-    })();
-    
-
-// ***********************************************************************************************************
 
     // Functions
     const createTable = () => {
-       const table = document.createElement('table');
-       document.querySelector('#taskTable').appendChild(table);
-       table.id = 'table';
-       
-       const tableRow = document.createElement('tr');
-       const taskHead = document.createElement('th');
-       const taskNode = document.createTextNode("Task");
-       const dateHead = document.createElement('th');
-       const dateNode = document.createTextNode("Date");
-       const removeHead = document.createElement('th');
-       
-       tableRow.id = 'tableRow';
-       table.appendChild(tableRow);
-       tableRow.appendChild(taskHead);
-       taskHead.appendChild(taskNode);
-       tableRow.appendChild(dateHead);
-       dateHead.appendChild(dateNode);
-       tableRow.appendChild(removeHead);
+        
+        const table = document.createElement('table');
+        const tableRow = document.createElement('tr');
+        const taskHead = document.createElement('th');
+        const taskNode = document.createTextNode("Task");
+        const dateHead = document.createElement('th');
+        const dateNode = document.createTextNode("Date");
+        const removeHead = document.createElement('th');
+        
+        table.id = 'table';
+        tableRow.id = 'tableRow';
+        
+        document.querySelector('#taskTable').appendChild(table);
+        table.appendChild(tableRow);
+        tableRow.appendChild(taskHead);
+        taskHead.appendChild(taskNode);
+        tableRow.appendChild(dateHead);
+        dateHead.appendChild(dateNode);
+        tableRow.appendChild(removeHead);
+
     };
 
     const newTask = (task, date) => {
@@ -58,10 +41,7 @@ $(document).ready(() => {
 
         //Add new task to localStorage
         let tasks = JSON.parse(localStorage.getItem('tasks'));
-        tasks.push({
-            task: task,
-            date: date
-        });
+        tasks.push({ task, date });
         localStorage.setItem('tasks', JSON.stringify(tasks));
         
         //Remove task when Delete button is clicked.
@@ -76,27 +56,40 @@ $(document).ready(() => {
             for (i = 0; i < tasks.length; i++) {
                 if (tasks[i].task === task) {
                     tasks.splice(i, 1);
-                    console.log(tasks);
                     localStorage.setItem('tasks', JSON.stringify(tasks));
-                    break;
+                    console.log(localStorage.tasks);
                 };
-            }
+            };
             
             if (table.children.length > 2) {
-               
                 taskRow.parentNode.removeChild(taskRow);
                 console.log("Task Removed.");
-
             } else {
                 table.parentNode.removeChild(table);
                 console.log("Table removed.");
             }
-        
         });
-
-        
-
     };
+
+    // ***********************************************************************************************************
+
+    // Execute immediately after document has finished loading.
+    (() => {
+        let tasks = JSON.parse(localStorage.getItem('tasks'));
+
+        //Check if tasks exist in localStorage
+        if (!tasks) {
+            console.log('No tasks in localStorage.');
+            localStorage.setItem('tasks', '[]');
+        
+        //Should any tasks exist, create a table and generate a row for them. 
+        } else {
+            createTable();
+            for (i = 0; i < tasks.length; i++) {
+                newTask(tasks[i].task, tasks[i].date);
+            }
+        }
+    })();
 
 // ***********************************************************************************************************
 
