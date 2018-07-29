@@ -1,5 +1,21 @@
 $(document).ready(() => {
     
+    // Log any saved tasks if present in localStorage
+    { () => {
+        let storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    
+        if (storedTasks !== null) {
+            !document.querySelector('#table') && createTable();
+            for (i = 0; i < storedTasks.length; i++) {
+                console.log(`TASKS IN STORAGE - [${i}]: ${storedTasks[i].task}, ${storedTasks[i].date}`);
+            }
+        } else {
+            console.log("No tasks in local storage.");
+        }
+    }};
+
+// ***********************************************************************************************************
+
     // Functions
     const createTable = () => {
        const table = document.createElement('table');
@@ -26,7 +42,6 @@ $(document).ready(() => {
 
     const newTask = (task, date) => {
         const taskRow = document.createElement('tr');
-        taskRow.id = "taskRow";
         taskRow.class = "taskRow";
         table.appendChild(taskRow);
 
@@ -44,7 +59,6 @@ $(document).ready(() => {
         taskRow.appendChild(removeText);
         const removeBtn = document.createElement('button');
         removeText.appendChild(removeBtn).appendChild(document.createTextNode('Delete'));
-        
         removeBtn.addEventListener('click', () => { // remove task from table and local storage
             if (table.children.length > 2) {
                 taskRow.parentNode.removeChild(taskRow);
@@ -55,21 +69,11 @@ $(document).ready(() => {
             }
         
         });
-    };
 
-// ***********************************************************************************************************
-
-    // Log any saved tasks if present in localStorage
-    let storedTasks = JSON.parse(localStorage.getItem('tasks'));
-
-    if (storedTasks !== null) {
-        !document.querySelector('#table') && createTable();
-        for (i = 0; i < storedTasks.length; i++) {
-            console.log(`TASKS IN STORAGE - [${i}]: ${storedTasks[i].task}, ${storedTasks[i].date}`);
+        if (JSON.parse(localStorage.getItem('tasks')) === null) {
+            console.log("Nothing in storage.");
         }
-    } else {
-        console.log("2: No tasks in local storage.");
-    }
+    };
 
 // ***********************************************************************************************************
 
@@ -84,28 +88,6 @@ $(document).ready(() => {
         } else { 
             !document.querySelector('#table') && createTable();
             newTask(input, new Date());
-            
-            // store all tasks in localStorage
-            let tasks = [];
-            const table = document.querySelector('#table');
-            
-            
-            
-            
-            for (i = 1; i < table.children.length; i++) {
-                if (storedTasks.children[i].textContent.indexOf(table.children[i].children[0].textContent) < 0) {
-                    continue;
-                } else {
-                    tasks.push({
-                        task: table.children[i].children[0].textContent,
-                        date: table.children[i].children[1].textContent
-                    })
-                }
-            }
-            localStorage.setItem('tasks', JSON.stringify(tasks));
-
-
-
         }
     }); // end of event
 });  //end of $(document).ready
