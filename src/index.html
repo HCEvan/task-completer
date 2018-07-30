@@ -16,25 +16,27 @@
 </head>	<!-- End of Head -->
 
 <body>	<!-- Start of Body -->
-	<section class="create-task">
-		<div class="create-task__wrapper">
-			
-			<h1 class="create-task__wrapper__title">Task Completer</h1>
-
-			<form class="create-task__wrapper__form" id="taskForm">
-				<input class="form-control create-task__wrapper__form__input" id="userInput" type="text" placeholder="Insert Task" value="">
-				<input class="btn btn-success create-task__wrapper__form__submit" id="submitBtn" type="submit" value="Add">
-			</form>
-
-		</div>
-	</section>
-	<section id="taskTable">
-
-	</section>
+	<div class="app-container">
+		<section class="create-task">
+			<div class="create-task__wrapper">
+				
+				<h1 class="create-task__wrapper__title">Task Completer</h1>
+	
+				<form class="create-task__wrapper__form" id="addTaskForm">
+					<input class="form-control create-task__wrapper__form__input" id="userInput" type="text" placeholder="Insert Task" value="">
+					<input class="btn btn-success create-task__wrapper__form__submit" id="submitBtn" type="submit" value="Add">
+				</form>
+	
+			</div>
+		</section>
+		<section id="taskSection">
+	
+		</section>
+	</div>
 
 	<!-- Javascript Files -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>   
-	<script src="./js/formupdate.js"></script>
+	<script src="./js/index.js"></script>
 
 </body> <!-- End of Body -->
 
