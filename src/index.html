@@ -17,21 +17,29 @@
 
 <body>	<!-- Start of Body -->
 	<div class="app-container">
-		<section class="create-task">
-			<div class="create-task__wrapper">
-				
-				<h1 class="create-task__wrapper__title">Task Completer</h1>
-	
-				<form class="create-task__wrapper__form" id="addTaskForm">
-					<input class="form-control create-task__wrapper__form__input" id="userInput" type="text" placeholder="Insert Task" value="">
-					<input class="btn btn-success create-task__wrapper__form__submit" id="submitBtn" type="submit" value="Add">
-				</form>
-	
+		
+		<section class="title">
+			
+			<div class="title__wrapper">
+				<h1 class="title__wrapper__text">Task Completer</h1>
 			</div>
+
 		</section>
-		<section id="taskSection">
+
+		<section class="create-task">
+			
+			<div class="create-task__form">
+				
+				<form class="create-task__form__wrapper" id="addTaskForm">
+					<input class="form-control create-task__form__wrapper__input" id="userInput" type="text" placeholder="Insert Task" value="">
+					<input class="btn btn-success create-task__form__wrapper__submit" id="submitBtn" type="submit" value="Add">
+				</form>
+
+			</div>
+
+		</section>
 	
-		</section>
+		<section id="taskSection"><!-- Dynamically Created Table Here --></section>
 	</div>
 
 	<!-- Javascript Files -->

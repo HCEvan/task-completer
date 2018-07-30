@@ -1,0 +1,55 @@
+body {
+    background: linear-gradient(to right top, #e00232, #f04925, #fa7213, #ff9800, #ffbc00) no-repeat fixed;
+    
+}
+
+.app-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    height: 8rem;
+}
+
+.title__wrapper__text {
+    font-size: 3.2rem;
+    font-weight: bold;
+    font-family: calibri;
+}
+
+.create-task {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.create-task__form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.create-task__form__wrapper {
+    width: 40rem;
+
+
+}
+
+.create-task__form__wrapper__input {
+border-radius: .4rem;
+width: 80%;
+line-height: 1.5rem;
+font-size: 1.25rem;
+}
+
+.create-task__form__wrapper__submit {
+    font-size: 1.25rem;
+    width: 15%;
+}
