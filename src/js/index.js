@@ -25,6 +25,14 @@ const createTaskTable = () => {
     const dateHead = document.createElement('th');
     const dateHeadNode = document.createTextNode("Date");
     const removeHead = document.createElement('th');
+    const removeHeadNode = document.createTextNode("Clear");
+
+    removeHead.addEventListener('click', () => {
+        let tasks = JSON.parse(localStorage.getItem('tasks'));
+        tasks = null;
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        table.parentElement.removeChild(table);
+    });
 
     table.id = 'taskTable'
 
@@ -35,6 +43,8 @@ const createTaskTable = () => {
     appendDOM(tableHeader, dateHead);
     appendDOM(dateHead, dateHeadNode);
     appendDOM(tableHeader, removeHead);
+    appendDOM(removeHead, removeHeadNode);
+
 };
 
 const createRow = (userInput, date) => {
@@ -88,7 +98,7 @@ const removeTask = (task, taskRow) => {
             localStorage.setItem('tasks', JSON.stringify(tasks));
         };
     };
-    table.children.length > 2 ? taskRow.parentNode.removeChild(taskRow) : table.parentNode.removeChild(table);
+    table.children.length > 2 ? taskRow.parentElement.removeChild(taskRow) : table.parentElement.removeChild(table);
 };
 
 /**************************************************************/
@@ -96,13 +106,14 @@ const removeTask = (task, taskRow) => {
 /************* EVENTS *************/
 addTaskForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const userInput = document.querySelector('#userInput').value;
-    const date = Date();
-    if (userInput) {
+    let userInput = document.querySelector('#userInput').value;
+    const date = new Date().toDateString();
+    if (userInput && userInput.length < 50) {
         createRow(userInput, date);
         saveToStorage(userInput, date);
+        userInput = "";
     } else {
-        alert('Please enter a task.');
+        alert('Please enter a task (Max 50 characters).');
     }
 
 /**************************************************************/
