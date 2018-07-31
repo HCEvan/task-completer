@@ -90,7 +90,7 @@ const saveToStorage = (userInput, date) => {
 };
 
 const removeTask = (task, taskRow) => {	
-    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    let tasks = JSON.parse(localStorage.getItem('tasks'));
     const table = document.querySelector('#taskTable');
     for (i = 0; i < tasks.length; i++) {
         if (tasks[i].task === task) {
@@ -98,7 +98,13 @@ const removeTask = (task, taskRow) => {
             localStorage.setItem('tasks', JSON.stringify(tasks));
         };
     };
-    table.children.length > 2 ? taskRow.parentElement.removeChild(taskRow) : table.parentElement.removeChild(table);
+    if (table.children.length > 2) {
+        taskRow.parentElement.removeChild(taskRow)
+    } else {
+        table.parentElement.removeChild(table);
+        tasks = null;
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
 };
 
 /**************************************************************/
@@ -111,7 +117,7 @@ addTaskForm.addEventListener('submit', (e) => {
     if (userInput && userInput.length < 50) {
         createRow(userInput, date);
         saveToStorage(userInput, date);
-        userInput = "";
+        document.querySelector('#userInput').value = "";
     } else {
         alert('Please enter a task (Max 50 characters).');
     }
