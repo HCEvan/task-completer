@@ -1,0 +1,86 @@
+.table-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: $theme11;
+    &__table {
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        &__head-row {
+            height: 3rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;            
+            background-color: $theme11;
+            color: #fff;
+            border: .1rem solid #000;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            &__task {
+                flex: 1;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            &__date {
+                flex: 2;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+            &__remove {
+                flex: 1;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        &__task-row {
+            height: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;            
+            background-color: $theme8;
+            color: #fff;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            &__task {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                border-right: .1rem solid #000;
+            }
+            &__date {
+                flex: 2;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                border-right: .1rem solid #000;
+            }
+            &__remove {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                height: 100%;
+                width: 100%;
+                &__button {
+                    width: 100%;
+                    color: white;
+                    font-weight: bold;
+                    border: none;
+                    background-color: $theme8;
+
+                }
+            }
+        }
+    }
+}

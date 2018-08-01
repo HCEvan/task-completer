@@ -34,7 +34,15 @@ const createTaskTable = () => {
         table.parentElement.removeChild(table);
     });
 
-    table.id = 'taskTable'
+    table.id = 'taskTable';
+
+    table.classList.add('table-section__table');
+    tableHeader.classList.add('table-section__table__head-row');
+    taskHead.classList.add('table-section__table__head-row__task');
+    dateHead.classList.add('table-section__table__head-row__date');
+    removeHead.classList.add('table-section__table__head-row__remove');
+
+
 
     appendDOM(document.querySelector('#taskSection'), table);
     appendDOM(table, tableHeader);
@@ -65,6 +73,13 @@ const createRow = (userInput, date) => {
         removeTask(userInput, row)
     });
     
+    row.classList.add('table-section__table__task-row');
+    taskCell.classList.add('table-section__table__task-row__task');
+    dateCell.classList.add('table-section__table__task-row__date');
+    removeCell.classList.add('table-section__table__task-row__remove');
+    removeBtn.classList.add('table-section__table__task-row__remove__button');
+
+
     appendDOM(document.querySelector('#taskTable'), row);
     appendDOM(row, taskCell);
     appendDOM(taskCell, taskCellNode);
