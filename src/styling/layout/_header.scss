@@ -1,6 +1,8 @@
 .title {
-    background-color: $theme6;
+    background-color: rgb(249, 113, 0);
     height: 5rem;
+    border-bottom: .1rem solid black;
+
     &__wrapper {
         width: 100%;
         height: 100%;
@@ -10,6 +12,7 @@
         font-size: 2rem;
         font-weight: bold;
         letter-spacing: 0.2rem;
+        
         &__text {
             color: #FFF;
         }

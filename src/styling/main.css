@@ -21,11 +21,12 @@ table {
   border-spacing: 0; }
 
 body {
-  background-color: #02365b; }
+  background-color: #000; }
 
 .title {
-  background-color: #034f84;
-  height: 5rem; }
+  background-color: #f97100;
+  height: 5rem;
+  border-bottom: .1rem solid black; }
   .title__wrapper {
     width: 100%;
     height: 100%;
@@ -40,111 +41,105 @@ body {
 
 .create-task {
   width: 100%;
-  height: 2.5rem;
-  background-color: #02365b; }
+  height: 3rem; }
   .create-task__wrapper {
-    width: 100%;
     height: 100%; }
     .create-task__wrapper__form {
       display: flex;
       justify-content: center;
-      width: 100%;
       height: 100%; }
       .create-task__wrapper__form__input {
-        flex: 3;
-        border: black solid .1rem;
-        border-left: none;
-        border-right: none;
+        flex: 2;
+        display: flex;
+        text-align: center;
+        border: none;
         color: #FFF;
         font-size: 1rem;
         font-weight: bold;
         letter-spacing: .05rem;
-        background-color: #02365b;
-        padding-left: 1rem; }
-        .create-task__wrapper__form__input::placeholder {
-          color: #FFF;
-          opacity: .5; }
+        background-color: #333; }
       .create-task__wrapper__form__submit {
         flex: 1;
-        background-color: #012641;
+        height: 100%;
+        border: none;
+        background-color: #111;
         color: #FFF;
-        border: black solid .1rem;
-        font-weight: bold;
         font-size: 1rem;
+        font-weight: bold;
         letter-spacing: 0.05rem; }
 
 .table-section {
   width: 100%;
   display: flex;
-  justify-content: center;
-  background-color: #012641; }
+  justify-content: center; }
   .table-section__table {
     width: 100%;
     display: flex;
     flex-flow: column; }
     .table-section__table__head-row {
-      height: 3rem;
-      font-weight: bold;
       display: flex;
       align-items: center;
-      background-color: #012641;
-      color: #fff;
+      height: 3rem;
+      background-color: #222;
       border: .1rem solid #000;
-      border-top: none;
-      border-left: none;
-      border-right: none; }
+      color: #fff;
+      font-weight: bold; }
       .table-section__table__head-row__task {
         flex: 1;
-        height: 100%;
         display: flex;
         justify-content: center;
-        align-items: center; }
+        align-items: center;
+        border-right: .1rem solid #000;
+        height: 100%; }
       .table-section__table__head-row__date {
         flex: 2;
-        height: 100%;
         display: flex;
         justify-content: center;
-        align-items: center; }
+        align-items: center;
+        border-right: .1rem solid #000;
+        height: 100%; }
       .table-section__table__head-row__remove {
         flex: 1;
-        height: 100%;
         display: flex;
         justify-content: center;
-        align-items: center; }
+        align-items: center;
+        height: 100%;
+        background-color: rgba(0, 43, 0, 0.8); }
+        .table-section__table__head-row__remove:hover {
+          cursor: pointer; }
     .table-section__table__task-row {
-      height: 3rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #023e68;
-      color: #fff;
+      height: 3rem;
       border-top: none;
       border-left: none;
-      border-right: none; }
+      border-right: none;
+      color: #fff;
+      background-color: #111; }
       .table-section__table__task-row__task {
         flex: 1;
         display: flex;
         justify-content: center;
-        align-content: center;
-        border-right: .1rem solid #000; }
+        align-content: center; }
       .table-section__table__task-row__date {
         flex: 2;
         display: flex;
         justify-content: center;
-        align-content: center;
-        border-right: .1rem solid #000; }
+        align-content: center; }
       .table-section__table__task-row__remove {
         flex: 1;
         display: flex;
         justify-content: center;
         align-content: center;
         height: 100%;
-        width: 100%; }
+        width: 100%;
+        background-color: #000; }
         .table-section__table__task-row__remove__button {
           width: 100%;
-          color: white;
-          font-weight: bold;
           border: none;
-          background-color: #023e68; }
+          background-color: rgba(197, 0, 10, 0.6);
+          color: white;
+          font-weight: bold; }
 
 /*# sourceMappingURL=main.css.map */

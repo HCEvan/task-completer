@@ -1,40 +1,42 @@
 .create-task {
     width: 100%;
-    height: 2.5rem;
-    background-color: $theme9;
+    height: 3rem;
+
     &__wrapper {
-        width: 100%;
         height: 100%;
+
         &__form {
             display: flex;
             justify-content: center;
-            width: 100%;
             height: 100%;
+
             &__input {
-                flex: 3;
-                border: black solid .1rem;
-                border-left: none;
-                border-right: none;
+                flex: 2;
+                display: flex;
+                text-align: center;
+
+                border: none;
+                
                 color: #FFF;
                 font-size: 1rem;
                 font-weight: bold;
                 letter-spacing: .05rem;
+                
 
-                background-color: $theme9;
-                padding-left: 1rem;
-                &::placeholder {
-                    color: #FFF;
-                    opacity: .5;
-                }
+                background-color: #333;
 
             }
+
             &__submit {
                 flex: 1;
-                background-color: $theme11;
+                
+                height: 100%;
+                border: none;
+                background-color: #111;
+                
                 color: #FFF;
-                border: black solid .1rem;
-                font-weight: bold;
                 font-size: 1rem;
+                font-weight: bold;
                 letter-spacing: 0.05rem;
             }
         }
