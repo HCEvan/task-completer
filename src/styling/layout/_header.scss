@@ -1,7 +1,6 @@
 .title {
-    background-color: rgb(249, 113, 0);
     height: 5rem;
-    border-bottom: .1rem solid black;
+    background-color: #d05e31 ;
 
     &__wrapper {
         width: 100%;
@@ -14,7 +13,7 @@
         letter-spacing: 0.2rem;
         
         &__text {
-            color: #FFF;
+            color: #fbf3f0 ;
         }
     }
 }

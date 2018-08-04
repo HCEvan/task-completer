@@ -27,7 +27,7 @@ const createTaskTable = () => {
     const dateHead = document.createElement('th');
     const dateHeadNode = document.createTextNode("Date");
     const removeHead = document.createElement('th');
-    const removeHeadNode = document.createTextNode("Clear");
+    const removeHeadNode = document.createTextNode("Clear All");
 
     removeHead.addEventListener('click', () => {
         let tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -70,7 +70,7 @@ const createRow = (userInput, date) => {
     
     const removeBtn = document.createElement('input');
     removeBtn.type = 'button';
-    removeBtn.value = 'Remove';
+    removeBtn.value = 'Done?';
     removeBtn.addEventListener('click', () => {
         removeTask(userInput, row)
     });
