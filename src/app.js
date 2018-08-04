@@ -1,3 +1,5 @@
+require('./styling/main.scss');
+
 $(document).ready(() => {
     //if any tasks in storage then create a task table and loop through each task, appending as a row to task table.
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
