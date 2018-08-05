@@ -6,41 +6,51 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 	<!-- Libraries, Fonts and Other CDNs -->
-	<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
 	<title>Task Completer</title>
 </head>	<!-- End of Head -->
 
 <body>	<!-- Start of Body -->
 	<div class="app-container">
+		<header class="header">
+			
+			<div class="header__wrapper">
+				<h1 class="header__wrapper__text">Task-It-Place</h1>
+			</div>
+			
+		</header>
 		
-		<section class="title">
-			
-			<div class="title__wrapper">
-				<h1 class="title__wrapper__text">Task-It-Place</h1>
-			</div>
-
-		</section>
-
-		<section class="create-task">
-			
-			<div class="create-task__wrapper">
+		<main class="main-section">
+			<section class="create-task">
 				
-				<form class="create-task__wrapper__form" id="addTaskForm" autocomplete="off">
-					<input class="form-control create-task__wrapper__form__input" id="userInput" type="text" placeholder="..." value="" autofocus>
-					<input class="btn btn-success create-task__wrapper__form__submit" id="submitBtn" type="submit" value="Create">
-				</form>
-
-			</div>
-
-		</section>
+				<div class="create-task__wrapper">
+					
+					<form class="create-task__wrapper__form" id="addTaskForm" autocomplete="off">
+						<input class="form-control create-task__wrapper__form__input" id="userInput" type="text" placeholder="..." value="" autofocus>
+						<input class="btn btn-success create-task__wrapper__form__submit" id="submitBtn" type="submit" value="Create">
+					</form>
 	
-		<section id="taskSection" class="table-section"><!-- Dynamically Created Table Here --></section>
+				</div>
+	
+			</section>
+			
+			<section id="taskSection" class="table-section"><!-- Dynamically Created Table Here --></section>
+		</main>
+
+		<footer class="footer">
+			<div class="footer__wrapper">
+				<h1 class="footer__wrapper__text">The Task-It-Place &copy;</h1>
+			</div>
+		</footer>
+	
 	</div>
 
 	<!-- Javascript Files -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>   
 	<script src="./dist/bundle.js"></script>
+
+
 
 </body> <!-- End of Body -->
 

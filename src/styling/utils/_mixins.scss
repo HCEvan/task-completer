@@ -1,0 +1,11 @@
+@mixin flexbox ($ff, $jc, $ai) {
+    display: flex;
+    flex-flow: $ff;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin hnw ($h, $w) {
+    height: $h;
+    width: $w;
+}

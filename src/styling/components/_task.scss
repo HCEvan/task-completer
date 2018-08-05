@@ -1,48 +1,40 @@
 .create-task {
     height: 7.5rem;
-    padding: .5rem;
+    padding: $xsmall;
 
     &__wrapper {
         height: 100%;
 
         &__form {
-            display: flex;
-            flex-flow: column;
-            align-items: center;
-            height: 100%;
-            width: 100%;
+            @include hnw(100%, 100%);
+            @include flexbox(column, center, center);
 
             &__input {
-                flex: 1;
-                display: flex;
-                text-align: center;
                 width: 100%;
-                margin-bottom: 0.5rem;
-
-                background-color: #fbf3f0    ;
+                flex: 1;
+                margin-bottom: $xsmall;
                 border: none;
                 border-radius: .2rem;
-                
-                font-size: 1rem;
+                background-color: $theme-color-l5;
+                text-align: center;
+                font-size: $small;
+                letter-spacing: .05;
                 font-weight: bold;
-                letter-spacing: .05rem;
             }
 
             &__submit {
+                @include hnw(100%, 100%);
                 flex: 2;
-                height: 100%;
                 border: none;
                 border-radius: .2rem;
-
-                background-color: #8e3f20   ;
-
-                width: 100%;
-                color: #fbf3f0 ;
-
-                
-                font-size: 1rem;
+                background-color: $theme-color-d1;
+                color: $theme-color-l5;
+                font-size: $small;
                 font-weight: bold;
                 letter-spacing: 0.05rem;
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
     }

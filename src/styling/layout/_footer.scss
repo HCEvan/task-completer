@@ -1,14 +1,14 @@
-.header {
-    height: $large;
-    background-color: $theme-color-l1;
+.footer {
+    @include hnw(10rem, 100%);
+    position: relative;
+    bottom: 0;
+    left: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, .5);
 
     &__wrapper {
         @include hnw(100%, 100%);
         @include flexbox(row, center, center);
-
-        font-size: $med;
-        font-weight: bold;
-        letter-spacing: 0.2rem;
         
         &__text {
             color: $theme-color-l5;

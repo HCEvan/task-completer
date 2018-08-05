@@ -5,6 +5,7 @@ $(document).ready(() => {
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
     if (storedTasks !== null) { 
         createTaskTable();
+        let i = 0;
         for (i = 0; i < storedTasks.length; i++) {
             createRow(storedTasks[i].task, storedTasks[i].date)
         }
@@ -27,7 +28,7 @@ const createTaskTable = () => {
     const dateHead = document.createElement('th');
     const dateHeadNode = document.createTextNode("Date");
     const removeHead = document.createElement('th');
-    const removeHeadNode = document.createTextNode("Clear All");
+    const removeHeadNode = document.createTextNode("Clear");
 
     removeHead.addEventListener('click', () => {
         let tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -43,8 +44,6 @@ const createTaskTable = () => {
     taskHead.classList.add('table-section__table__head-row__task');
     dateHead.classList.add('table-section__table__head-row__date');
     removeHead.classList.add('table-section__table__head-row__remove');
-
-
 
     appendDOM(document.querySelector('#taskSection'), table);
     appendDOM(table, tableHeader);
@@ -70,7 +69,7 @@ const createRow = (userInput, date) => {
     
     const removeBtn = document.createElement('input');
     removeBtn.type = 'button';
-    removeBtn.value = 'Done?';
+    removeBtn.value = 'X';
     removeBtn.addEventListener('click', () => {
         removeTask(userInput, row)
     });
@@ -109,6 +108,7 @@ const saveToStorage = (userInput, date) => {
 const removeTask = (task, taskRow) => {	
     let tasks = JSON.parse(localStorage.getItem('tasks'));
     const table = document.querySelector('#taskTable');
+    let i;
     for (i = 0; i < tasks.length; i++) {
         if (tasks[i].task === task) {
             tasks.splice(i, 1);
@@ -130,13 +130,13 @@ const removeTask = (task, taskRow) => {
 addTaskForm.addEventListener('submit', (e) => {
     e.preventDefault();
     let userInput = document.querySelector('#userInput').value;
-    const date = new Date().toDateString();
-    if (userInput && userInput.length < 50) {
+    const date = new Date().getFullYear();
+    if (userInput && userInput.length <= 20) {
         createRow(userInput, date);
         saveToStorage(userInput, date);
         document.querySelector('#userInput').value = "";
     } else {
-        alert('Please enter a task (Max 50 characters).');
+        alert('Please enter a task (Max 20 characters).');
     }
 
 /**************************************************************/
