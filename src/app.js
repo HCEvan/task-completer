@@ -3,12 +3,11 @@ require('./styling/main.scss');
 $(document).ready(() => {
     //if any tasks in storage then create a task table and loop through each task, appending as a row to task table.
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+
     if (storedTasks !== null) { 
         createTaskTable();
-        let i = 0;
-        for (i = 0; i < storedTasks.length; i++) {
-            createRow(storedTasks[i].task, storedTasks[i].date)
-        }
+
+        storedTasks.map(task => createRow(task.task, task.date));
     }
 });
 
@@ -18,7 +17,7 @@ const addTaskForm = document.querySelector('#addTaskForm');
 /**************************************************************/
 
 /************* FUNCTIONS *************/
-const appendDOM = (parent, child) => (parent.appendChild(child));
+const appendDOM = (parent, child) => parent.appendChild(child);
 
 const createTaskTable = () => {
     const table = document.createElement('table');
@@ -31,9 +30,8 @@ const createTaskTable = () => {
     const removeHeadNode = document.createTextNode("Clear");
 
     removeHead.addEventListener('click', () => {
-        let tasks = JSON.parse(localStorage.getItem('tasks'));
-        tasks = null;
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+        localStorage.setItem('tasks', JSON.stringify(null));
+
         table.parentElement.removeChild(table);
     });
 
@@ -53,11 +51,9 @@ const createTaskTable = () => {
     appendDOM(dateHead, dateHeadNode);
     appendDOM(tableHeader, removeHead);
     appendDOM(removeHead, removeHeadNode);
-
 };
 
 const createRow = (userInput, date) => {
-    
     !document.querySelector('#taskTable') && createTaskTable();
 
     const row = document.createElement('tr');
@@ -88,55 +84,65 @@ const createRow = (userInput, date) => {
     appendDOM(dateCell, dateCellNode);
     appendDOM(row, removeCell);
     appendDOM(removeCell, removeBtn);
-
 };
 
 const saveToStorage = (userInput, date) => {
+    let tasks = [];
+
     if (JSON.parse(localStorage.getItem('tasks')) !== null) {
-        var tasks = JSON.parse(localStorage.getItem('tasks'));
-    } else {
-        var tasks = []
+        tasks = JSON.parse(localStorage.getItem('tasks'));
     }
+
     tasks.push({
         task: userInput,
         date: date
-    })
+    });
+
     localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    // @todo Remove this shiz.
     console.log(localStorage);
 };
 
-const removeTask = (task, taskRow) => {	
-    let tasks = JSON.parse(localStorage.getItem('tasks'));
+const removeTask = (task, taskRow) => {
     const table = document.querySelector('#taskTable');
-    let i;
-    for (i = 0; i < tasks.length; i++) {
+
+    let tasks = JSON.parse(localStorage.getItem('tasks'));
+
+    for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].task === task) {
             tasks.splice(i, 1);
             localStorage.setItem('tasks', JSON.stringify(tasks));
-        };
-    };
+        }
+    }
+
     if (table.children.length > 2) {
         taskRow.parentElement.removeChild(taskRow)
     } else {
         table.parentElement.removeChild(table);
-        tasks = null;
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+
+        localStorage.setItem('tasks', JSON.stringify(null));
     }
 };
 
 /**************************************************************/
 
 /************* EVENTS *************/
-addTaskForm.addEventListener('submit', (e) => {
+addTaskForm.addEventListener('submit', e => {
     e.preventDefault();
-    let userInput = document.querySelector('#userInput').value;
+
     const date = new Date().getFullYear();
-    if (userInput && userInput.length <= 20) {
+
+    let userInput = document.querySelector('#userInput').value;
+
+    if (userInput && userInput.length <= 140) {
         createRow(userInput, date);
+
         saveToStorage(userInput, date);
+
         document.querySelector('#userInput').value = "";
     } else {
-        alert('Please enter a task (Max 20 characters).');
+        alert('Please enter a task (Max 140 characters).');
     }
 
 /**************************************************************/

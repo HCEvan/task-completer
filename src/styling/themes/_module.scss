@@ -1,17 +1,17 @@
 /***** Colors *****/
 
-$theme-color: #9e4624;
+$theme-color: #9e9e2e;
 
 // Lightened
-$theme-color-l1: #d05e31;
-$theme-color-l2: #dc8664;
-$theme-color-l3: #e8ae98;
-$theme-color-l4: #f3d7cb;
-$theme-color-l5: #fbf3f0;
+$theme-color-l1: lighten($theme-color, 10%);
+$theme-color-l2: lighten($theme-color, 30%);
+$theme-color-l3: lighten($theme-color, 50%);
+$theme-color-l4: lighten($theme-color, 70%);
+$theme-color-l5: lighten($theme-color, 90%);
 
 // Darkened
-$theme-color-d1: #8e3f20;
-$theme-color-d2: #7e381d;
-$theme-color-d3: #6f3119;
-$theme-color-d4: #5f2a16;
-$theme-color-d5: #4f2312;
+$theme-color-d1: darken($theme-color, 10%);
+$theme-color-d2: darken($theme-color, 30%);
+$theme-color-d3: darken($theme-color, 50%);
+$theme-color-d4: darken($theme-color, 70%);
+$theme-color-d5: darken($theme-color, 90%);
